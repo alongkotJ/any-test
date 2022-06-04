@@ -33,7 +33,7 @@ func (t *TodoHandler) NewTask(c *gin.Context) {
 		return
 	}
 
-	if err := t.db.Create(todo).Error; err != nil {
+	if err := t.db.Create(&todo).Error; err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{
 			"message": err.Error(),
 		})
